@@ -28,5 +28,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/about'
     assert_select "title", full_title("About")
     check_layout_links
+
+    get signup_path
+    assert_template 'users/new'
+    assert_select "title", full_title("Sign up")
+    check_layout_links
   end
 end
