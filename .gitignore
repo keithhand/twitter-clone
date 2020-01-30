@@ -1,5 +1,8 @@
 # Ignore intellij config
-.idea/
+/.idea/
+
+# Ignore Spring files
+/spring/*.pid
 
 # See https://help.github.com/articles/ignoring-files for more about ignoring files.
 #
