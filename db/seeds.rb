@@ -1,3 +1,4 @@
+# create an admin user
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
@@ -6,6 +7,7 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
+# create 99 non admin users
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -17,4 +19,11 @@ User.create!(name:  "Example User",
                admin: false,
                activated: true,
                activated_at: Time.zone.now)
+end
+
+# attach posts to 6 of the users
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create(content: content) }
 end
